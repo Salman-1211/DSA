@@ -1,0 +1,37 @@
+    Node sortedMerge(Node A, Node B) {
+     // This is a "method-only" submission. 
+     // You only need to complete this method
+        Node h = null;
+        Node temp = null;
+        if(A== null) return B;
+        if(B==null) return A;
+        // Assigning the head of the h
+        if(A.data < B.data){
+            h = A;
+            temp = A;
+            A = A.next;
+        }else{
+            h = B;
+            temp = B;
+            B = B.next;
+        }
+        //Merge two sorted arrays
+        while(A != null && B != null){
+            if(A.data < B.data){
+                temp.next = A;
+                temp = temp.next;
+                A = A.next;
+            }else{
+                temp.next = B;
+                temp = temp.next;
+                B = B.next;
+            }
+        }
+        //adding the remaining elements
+        if(A != null){
+            temp.next = A;
+        }
+        if(B !=null){
+            temp.next = B;
+        }
+    return h; 
